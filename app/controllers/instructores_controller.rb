@@ -22,11 +22,6 @@ class InstructoresController < ApplicationController
 
   def new
     @instructor = Instructor.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @instructor }
-    end
   end
 
   def edit
@@ -38,7 +33,7 @@ class InstructoresController < ApplicationController
 
     respond_to do |format|
       if @instructor.save
-        format.html { redirect_to instructores_path, notice: 'Instructor Ingresado.' }
+        format.html { redirect_to instructores_path}
         format.json { render json: @instructor, status: :created, location: @instructor }
       else
         format.html { render action: "new" }
@@ -52,7 +47,7 @@ class InstructoresController < ApplicationController
 
     respond_to do |format|
       if @instructor.update_attributes(params[:instructor])
-        format.html { redirect_to @instructor, notice: 'El instructor fue actualizado con exito.' }
+        format.html { redirect_to instructores_path }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

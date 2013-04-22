@@ -1,4 +1,4 @@
-<%= simple_form_for(@instructor, :html => {:multipart => true, :class => 'form-horizontal' }) do |f| %>
+<%= simple_form_for(@instructor, :html => {:multipart => true, :class => 'form-horizontal'}, :return => true) do |f| %>
 
   <%= f.error_notification %>
   <%= f.file_field :foto, :label => "Foto"%>
