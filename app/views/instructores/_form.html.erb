@@ -1,0 +1,17 @@
+<%= simple_form_for(@instructor, :html => {:multipart => true, :class => 'form-horizontal' }) do |f| %>
+
+  <%= f.error_notification %>
+  <%= f.file_field :foto, :label => "Foto"%>
+  <%= f.input :nombre, :label =>  "Nombres", :require => true %>
+  <%= f.input :apellido, :label => "Apellidos", :require => true %>
+  <%= f.input :cedula, :label => "Cedula", :require => true %>
+  <%= f.input :telefono, :label => "Telefono", :require => true %>
+  <%= f.input :direccion, :label => "Direccion", :require => true %>
+  <p><%= f.label :materia_id %></p>
+  <p><%= f.collection_select :materia_id, Materia.all, :id, :nombre_materia, prompt: "Materia" %></p>
+
+  <div class="form-actions">
+    <%= f.submit "Guardar", :class => 'btn btn-primary' %>
+    <%= link_to "Atras", instructores_path, :class => 'btn btn-small' %>
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+<tr id=<%="horario_#{horario.id}"%>>
+
+	<td><%= horario.dia %></td>
+	<td><%= horario.hora %></td>
+	<td><%= horario.aula %></td>
+	<td><%= horario.materia.nombre_materia %></td>
+	<td><%= horario.instructor.nombre %></td>
+	<td><%= horario.asignatura.nombre_asignatura%></td>
+	<td><%= horario.created_at%></td>
+	<td>
+		<%= link_to 'Mostrar', horario, :remote => true, :class => 'btn btn-mini' %>
+		<%= link_to 'Editar', edit_horario_path(horario), :remote => true, :class => 'btn btn-mini' %>
+		<%= link_to 'Eliminar',horario, :data => {:confirm => 'Esta Seguro?'}, :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
+		<%= link_to "PDF", horario_path(horario, :format => "pdf"), :class => 'btn btn-mini btn-info' %>
+	</td>
+</tr>

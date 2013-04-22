@@ -1,0 +1,47 @@
+<%- model_class = Asignatura -%>
+<div class="page-header">
+  <h1>Cursos</h1>
+</div>
+
+<%= form_tag request.path, :method => 'get' do %>
+    <p>Nombre Curso:</p>
+    <p><%= text_field_tag :search, params[:search] %></p>
+   
+    <p>numero de registros
+    <p><%= text_field_tag :registro, params[:registro]%></p>
+
+    <p><%= submit_tag "Consultar", :nombre_asignatura => nil, :class => 'btn btn-small btn-success' %></p>
+<% end %> 
+
+<br/> 
+<table class="table table-striped table-bordered table-condensed pretty">
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= sortable "nombre_asignatura" %></th>
+      <th><%= sortable "ficha" %></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @asignaturas %>
+  </tbody>
+</table>
+
+<tfoot>
+  <tr>
+    <td><%= link_to 'Nuevo Curso', new_asignatura_path, :remote => true, :class => 'btn btn-small btn-info' %></td>
+  </tr> 
+</tfoot>
+
+<br/>
+<br/>
+
+<div align="center">
+  <%= will_paginate @asignaturas, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente &raquo:' rescue nil %>
+</div>
+
+<p>
+  Total Aprendices : <%= @asignaturas.total_entries %>
+</p>
+

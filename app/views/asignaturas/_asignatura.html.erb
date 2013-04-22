@@ -1,0 +1,13 @@
+<tr id=<%= "asignatura_#{asignatura.id}" %>>
+
+	<td><%= link_to 'estudiantes', asignatura_estudiantes_path(asignatura), :class => 'btn btn-mini btn-info'%></td>
+	
+	<td><%= asignatura.nombre_asignatura %></td>
+	<td><%= asignatura.ficha %></td>	
+
+	<td>
+		<%= link_to 'Mostrar', asignatura, :remote => true, :class => 'btn btn-mini' %>
+        <%= link_to 'Editar', edit_asignatura_path(asignatura), :remote => true, :class => 'btn btn-mini' %>
+        <%= link_to 'Eliminar', asignatura,  :data => { :confirm => 'Esta Seguro?' }, :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
+	</td>
+</tr>	

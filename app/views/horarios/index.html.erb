@@ -1,0 +1,53 @@
+<%- model_class = Horario -%>
+<div class="page-header">
+  <h1>Horarios</h1>
+</div>
+
+<%= form_tag request.path, :method => 'get' do%>
+ 
+    <p>Horario:</p>
+    <p><%= text_field_tag :search, params[:search] %></p>
+
+    <p>numero de registros:</p>
+    <p><%= text_field_tag :registros, params[:registros] %></p>
+
+    <p><%= submit_tag "Consultar", :aula => nil, :class => 'btn btn-small btn-success' %></p>
+<% end %>  
+
+<br/>  
+
+<table class=" span10 table table-striped table-bordered table-condensed pretty">
+  <thead>
+    <tr>
+      <th><%= sortable "dia" %></th>
+      <th><%= sortable "hora" %></th>
+      <th><%= sortable "aula" %></th>
+      <th><%= sortable "materia_id","Materia" %></th>
+      <th><%= sortable "instructor_id","Instructor" %></th>
+      <th><%= sortable "curso_id","Curso" %></th>
+      <th><%= sortable "created_at","Creado en" %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @horarios %>
+  </tbody>
+</table>
+
+<tfoot>
+  <tr>
+    <td><%= link_to 'Nuevo Horario', new_horario_path, :remote => true, :class => 'btn btn-small btn-info' %></td>
+  </tr>
+</tfoot>
+
+<br/>
+<br/>
+
+<div>
+  <%= will_paginate @horarios, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente&raquo;'%>
+</div>
+
+<p>
+  Total Horarios: <%= @horarios.total_entries %>
+</p>
+

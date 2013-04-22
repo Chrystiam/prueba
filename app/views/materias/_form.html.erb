@@ -1,0 +1,13 @@
+<%= simple_form_for(@materia, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
+
+	<%= f.error_notification %> 
+
+  <%= f.input :nombre_materia, :label => "Nombre Materia", :required => true %>
+  <p><%= f.label :asignatura_id %></p>
+  <p><%= f.collection_select :asignatura_id, Asignatura.all, :id, :nombre_asignatura, prompt: "Curso" %></p>
+  							                               
+  <div class="form-actions">
+    <%= f.submit "Guardar", :class => 'btn-primary' %>
+    <%= link_to "Atras", materias_path, :class => 'btn btn-small' %>
+  </div>
+<% end %>

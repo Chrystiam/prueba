@@ -1,0 +1,20 @@
+tablas maestras
+
+rails g scaffold instructor nombre:string apellido:string cedula:string telefono:string direccion:string --skip-stylesheets
+
+rails g scaffold materia nombre_materia:string --skip-stylesheets
+
+rails g scaffold asignatura nombre_asignatura:string ficha:string --skip-stylesheets
+
+tablas hijas
+
+rails g scaffold estudiante nombre:string apellido:string cedula:string telefono:string direccion:string curso:references --skip-stylesheets
+
+rails g scaffold horario dia:date hora:time aula:string materia:references instructor:references curso:references --skip-stylesheets
+
+rake db:migrate
+
+stylesheets:
+
+rails g bootstrap:install
+rails g bootstrap:themed modelo -f
